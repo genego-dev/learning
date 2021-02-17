@@ -6,7 +6,7 @@ def is_prime(x):
     return not any(x // i == x / i for i in range(x - 1, 1, -1))
 
 
-async  def highest_prime_below(x):
+async def highest_prime_below(x):
     print('Highest prime below %d' % x)
     for y in range(x - 1, 0, -1):
         if is_prime(y):
@@ -19,10 +19,12 @@ async  def highest_prime_below(x):
 async def main():
     t0 = time.time()
     await asyncio.wait([
-        highest_prime_below(100000),
+        highest_prime_below(10),
+        highest_prime_below(100),
+        highest_prime_below(1000),
         highest_prime_below(10000),
-        highest_prime_below(1000)
-])
+        highest_prime_below(100000)
+    ])
     t1 = time.time()
     print('Took %.2f ms' % (1000 * (t1 - t0)))
 
@@ -30,4 +32,3 @@ async def main():
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
-
