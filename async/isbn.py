@@ -28,6 +28,7 @@ async def main():
     await asyncio.gather(*task_list)
 
 
+
 if __name__ == "__main__":
     start_time = time.monotonic()
     asyncio.run(main())
